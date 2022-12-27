@@ -17,14 +17,14 @@ const Header = ({user} : UserDashBoardProps) => {
     <>
       <img
         src={user.avatar}
-        alt={UserImg}
-        className="d-container__header-img"
+        alt= {UserImg }
+        className="header__img"
       />
-      <p className="d-container__header-name">{user.name}</p>
-      <p className="d-container__header-tag">{`@${user.name}`}</p>
+      <p className="header__name">{user.name}</p>
+      <p className="header__tag">{`@${user.name}`}</p>
       <div
         onClick={() => handleLogOut()}
-        className="d-container__header-button"
+        className="header__button"
       >
         Log Out
       </div>
