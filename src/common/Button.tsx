@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../styles/button.css";
+import "../styles/button.scss";
 import { ButtonCommonProp } from "../utils/types";
 
 
 function Button({ path } : ButtonCommonProp) {
   return (
-    <div>
+    <div className="height">
       {path === "/" ? (
         <NavLink to = "/dashboard" className="button button--icon">
           <span>Get Start</span>

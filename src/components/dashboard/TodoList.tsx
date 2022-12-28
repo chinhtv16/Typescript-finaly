@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/todolist.css";
+import "../../styles/todolist.scss";
 import axios from "axios";
 import { getTasksRoute } from "../../utils/APIRoutes";
 

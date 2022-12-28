@@ -34,16 +34,17 @@
 .content__list {
     height: 100px;
     overflow-y: auto;
-}
 
-.content__list .content__list-item {
-    list-style: none;
-}
+    .content__list-item {
+        list-style: none;
 
-.content__list .content__list-item span {
-    margin-left: 11px;
-    font-weight: 400;
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    color: rgba(0, 0, 0, 0.75);
+        span {
+            margin-left: 11px;
+            font-weight: 400;
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            color: rgba(0, 0, 0, 0.75);
+        }
+    }
+    
 }

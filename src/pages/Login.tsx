@@ -1,38 +1,56 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoginImg from "../assets/img/Done.png";
 import Button from "../common/Button";
-import "../styles/login.css";
-import { handleValidateLogin, toastOptions } from "../utils/Validate";
-import { ToastContainer , toast } from "react-toastify";
+import "../styles/login.scss";
+import { handleValidateLogin } from "../utils/Validate";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserLogin } from "../utils/types";
+import { useFormik } from "formik";
+import * as Yup from "yup"
+import { DataInputLogin, ValuesLogin } from "../utils/typesForm";
 
 function Login() {
   const location = useLocation();
 
-  const user : UserLogin = JSON.parse(localStorage.getItem("user") || "{}")
+  const user: UserLogin = JSON.parse(localStorage.getItem("user") || "{}")
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-
-  const handleSubmit  = (e : any)  => {
-    e.preventDefault();
-    const dataInput = {
-      emailInput: email,
-      passwordInput: password,
-    };
-
-    if (user === null) {
-      navigate("/register");
-    } else {
-      if (handleValidateLogin(user, dataInput)) {
-        toast.success("Sign In Success", toastOptions);
-        navigate("/");
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().required("Required").matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Please enter a valid email address"),
+      password: Yup.string().required("Required").matches(/[a-z]/, "Please must be 7-19 characters and contain at least one letter , one number and a special character"),
+    }),
+    onSubmit: (values : ValuesLogin) => {
+      const { email, password } = values
+      const dataInput : DataInputLogin = {
+        emailInput: email,
+        passwordInput: password,
+      };
+      if (!user) {
+        navigate("/register");
+      } else {
+        if (handleValidateLogin(user, dataInput)) {
+          toast.success(' Sing In Success', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          })
+          setTimeout(() => navigate("/"), 2000)
+        }
       }
     }
-  };
+  })
 
   return (
     <>
@@ -42,49 +60,52 @@ function Login() {
           <span>Welcome back to</span>
           <span>OUR REMINDER</span>
         </div>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={formik.handleSubmit}>
           <input
-            type="email"
-            placeholder="Enter your email"
+            type="text"
             name="email"
-            autoComplete="off"
-            value={email}
-            onChange ={(e) => {
-              setEmail(e.target.value);
-            }}
+            id="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            placeholder="Enter your email"
           />
+          {formik.errors.email &&
+            <p className="errorMsg">{formik.errors.email}</p>
+          }
           <input
-            type="password"
-            placeholder="Enter password"
+            type="text"
             name="password"
-            autoComplete="off"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            id="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            placeholder="Enter your password"
           />
+          {formik.errors.password &&
+            <p className="errorMsg">{formik.errors.password}</p>
+          }
 
           <Button path={location.pathname} />
 
           <span>
             Already have an account ? <Link to="/register">Sing Up</Link>
           </span>
-        </form>
+        </form>      
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+
     </>
   );
 }
 
-export default Login;
+export default Login

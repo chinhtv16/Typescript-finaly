@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import "../styles/dashboard.css";
+import "../styles/dashboard.scss";
 import Clock from "../components/dashboard/Clock";
 import TodoList from "../components/dashboard/TodoList";
 import Header from "../components/dashboard/Header";

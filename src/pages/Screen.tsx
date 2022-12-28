@@ -1,21 +1,22 @@
-import React from "react";
-import "../styles/screen.css";
+import React , {useEffect} from "react";
+import "../styles/screen.scss";
 import ScreenImg from "../assets/img/Done.png";
 import Button from "../common/Button";
 import { useLocation, useNavigate } from "react-router-dom";
-import {  TypeObject } from "../utils/types";
 
 function Screen() {
   
   const location = useLocation()
-  console.log(location.pathname)
+
   const navigate = useNavigate();
 
-  const user : TypeObject = JSON.parse(localStorage.getItem("user") || "{}")
+  const user : {} = JSON.parse(localStorage.getItem("user") || "{}")
 
-  if (!user) {
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user])
 
   return (
     <div className="container">

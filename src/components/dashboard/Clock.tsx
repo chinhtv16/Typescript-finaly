@@ -1,5 +1,5 @@
 import React  from "react";
-import "../../styles/clock.css";
+import "../../styles/clock.scss";
 
 function Clock() {
 
