@@ -16,7 +16,7 @@ function Screen() {
     if (!user) {
       navigate("/login");
     }
-  }, [])
+  }, [user , navigate])
 
   return (
     <div className="container">
