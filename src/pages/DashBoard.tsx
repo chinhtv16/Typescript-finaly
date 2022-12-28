@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React  from "react";
 import "../styles/dashboard.scss";
 import Clock from "../components/dashboard/Clock";
 import TodoList from "../components/dashboard/TodoList";

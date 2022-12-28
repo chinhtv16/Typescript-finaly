@@ -16,7 +16,6 @@ import { ValuesRegister } from "../utils/typesForm";
 function Register() {
   const location = useLocation();
   const navigate = useNavigate();
-
   const [loading , setLoading] = useState<boolean>(true)
 
   const formik = useFormik({

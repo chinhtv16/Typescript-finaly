@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React  from "react";
 import "../../styles/header.scss";
 import UserImg from "../../assets/img/Ellipse 2.png";
 import { useNavigate } from "react-router-dom";
