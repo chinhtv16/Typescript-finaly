@@ -10,7 +10,6 @@ type TypePublicRoutes = {
 
 type TypePrivateRoutes = []
 
-
 const publicRoutes: TypePublicRoutes = [
     { path: '/', component: Screen },
     { path: '/register', component: Register },

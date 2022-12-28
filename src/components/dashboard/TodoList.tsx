@@ -28,9 +28,9 @@ function TodoList() {
   }, []);
 
   return (
-    <div className="d-container__content-tasklist">
-      <p className="heading">Tasks List</p>
-      <div className="content">
+    <div className="content__tasklist">
+      <p className="tasklist__heading">Tasks List</p>
+      <div className="tasklist__content">
         <div className="content__header">
           <p>Tasks List</p>
           <i className="fa-solid fa-circle-plus"></i>

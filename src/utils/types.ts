@@ -1,4 +1,3 @@
-export type TypeString = string
 export  type TypeObject = object
 
 

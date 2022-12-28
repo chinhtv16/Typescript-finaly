@@ -9,12 +9,12 @@ const DashBoard = () => {
   const user: UserDashBoard = JSON.parse(localStorage.getItem("user") || "{}");
 
   return (
-    <div className="d-container">
-      <div className="d-container__header">
+    <div className="container">
+      <div className="header__dashboard">
         <Header user={user} />
       </div>
 
-      <div className="d-container__content">
+      <div className="content__dashboard">
         <Clock />
         <TodoList />
       </div>

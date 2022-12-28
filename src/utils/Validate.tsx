@@ -17,21 +17,29 @@ export const toastOptions: ToastOptions = {
 export const handleValidateRegister = (dataInput : DataInputValidateRegister) => {
   const { name, email, password, confirmPassword } = dataInput;
 
-  if (name === "") {
+  if (!name) {
     toast.error(" Username is required ", toastOptions);
     return false;
   } else if (name.length > 10) {
     toast.error(" Name is too long ", toastOptions);
-  } else if (email === "") {
+  }
+  
+  if (!email) {
     toast.error(" Email is required", toastOptions);
     return false;
-  } else if (password === "") {
+  }
+  
+  if (!password) {
     toast.error(" Password is required", toastOptions);
     return false;
-  } else if (confirmPassword === "") {
+  } 
+  
+  if (!confirmPassword) {
     toast.error(" ComfirmPassword is required", toastOptions);
     return false;
-  } else if (password !== confirmPassword) {
+  }
+  
+  if (password !== confirmPassword) {
     toast.error(" ComfirmPassword and password not match", toastOptions);
     return false;
   }
@@ -40,22 +48,29 @@ export const handleValidateRegister = (dataInput : DataInputValidateRegister) =>
 };
 
 export const handleValidateLogin = (user : UserValidateLogin, dataInput : DataInputValidateLogin) => {
-  const { email, password } = user
+  const { email, password } = user;
   const { emailInput, passwordInput } = dataInput;
 
-  if (emailInput === "") {
+  if (!emailInput) {
     toast.error(" Email is required", toastOptions);
     return false;
-  } else if (passwordInput === "") {
+  } 
+  
+  if (!passwordInput) {
     toast.error(" Password is required", toastOptions);
     return false;
-  } else if (email !== emailInput) {
+  } 
+  
+  if (email !== emailInput) {
     toast.error("Email does not match the registered email", toastOptions);
     return false;
-  } else if (password !== passwordInput) {
+  } 
+  
+  if (password !== passwordInput) {
     toast.error("Password does not match the registered email", toastOptions);
     return false;
   }
+
   return true;
 };
 

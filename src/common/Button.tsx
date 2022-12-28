@@ -7,12 +7,12 @@ import { ButtonCommonProp } from "../utils/types";
 function Button({ path } : ButtonCommonProp) {
   return (
     <div>
-      {path === "" ? (
+      {path === "/" ? (
         <NavLink to = "/dashboard" className="button button--icon">
           <span>Get Start</span>
           <i className="button__icon fa-solid fa-arrow-right"></i>
         </NavLink>
-      ) : path === "login" ? (
+      ) : path === "/login" ? (
         <button className="button--margin-login" type="submit">Sign In</button>
       ) : (
         <button className = "button--margin-register" type="submit">Register</button>

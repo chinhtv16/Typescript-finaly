@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/register.css";
 import RegisterImg from "../assets/img/Done.png";
 import Button from "../common/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { registerRoute } from "../utils/APIRoutes";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,16 +13,15 @@ import {
   handleValidateRegister,
   toastOptions,
 } from "../utils/Validate";
-import { TypeString } from "../utils/types";
 
 function Register() {
-  let path : TypeString = window.location.pathname.split("/")[1];
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const [fullName, setFullName] = useState<TypeString>("");
-  const [email, setEmail] = useState<TypeString>("");
-  const [password, setPassword] = useState<TypeString>("");
-  const [confirmPassword, setConfirmPassword] = useState<TypeString>("");
+  const [fullName, setFullName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
 
   const handleSubmit = async (e : any) => {
     e.preventDefault();
@@ -51,13 +50,13 @@ function Register() {
 
   return (
     <>
-      <div className="r-container">
-        <img src={RegisterImg} alt="register" className="r-container__img" />
-        <div className="r-container__heading">
+      <div className="container">
+        <img src={RegisterImg} alt="register" className="img__register" />
+        <div className="heading__register">
           <span>Get’s things done </span>
           <span>with TODO</span>
         </div>
-        <p className="r-container__desc">Let’s help you meet up your tasks</p>
+        <p className="desc__register">Let’s help you meet up your tasks</p>
         <form onSubmit={(e) => handleSubmit(e)}>
           <input
             type="text"
@@ -98,7 +97,7 @@ function Register() {
             }}
           />
 
-          <Button path={path} />
+          <Button path={location.pathname} />
 
           <span>
             Already have an account ? <Link to="/login">Sing In</Link>

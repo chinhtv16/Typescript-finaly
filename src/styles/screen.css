@@ -1,4 +1,4 @@
-.s-container{
+.container{
     background-color: #F4C27F;
     width: 100vw; 
     display: flex;
@@ -7,11 +7,11 @@
     padding-top: 132px;
 }
 
-.s-container .s-container__img{
+.img__screen{
     width: 95%;
 }
 
-.s-container .s-container__heading{
+.heading__screen{
     width: 171px;
     height: 49px;
     display: flex;
@@ -21,12 +21,12 @@
     margin-top: 13px;
 }
 
-.s-container .s-container__heading--fz{
+.heading__screen--fz{
     font-size: 20px;
     font-weight: 600;
 }
 
-.s-container .s-container__desc{
+.desc__screen{
     font-size: 12px;
     font-weight: 400;
     width: 281px;
