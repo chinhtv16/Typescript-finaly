@@ -27,7 +27,7 @@ function Register() {
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Required").min(4, "Must be 4 characters or more"),
-      email: Yup.string().required("Required").matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Please enter a valid email address"),
+      email: Yup.string().required("Required").matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, "Please enter a valid email address"),
       password: Yup.string().required("Required").matches(/[a-z]/, "Please must be 7-19 characters and contain at least one letter , one number and a special character"),
       confirmPassword: Yup.string().required("Required").oneOf([Yup.ref("password"), null], "Password must matches"),
     }),

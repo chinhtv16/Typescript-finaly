@@ -23,7 +23,7 @@ function Login() {
       password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Required").matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Please enter a valid email address"),
+      email: Yup.string().required("Required").matches(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, "Please enter a valid email address"),
       password: Yup.string().required("Required").matches(/[a-z]/, "Please must be 7-19 characters and contain at least one letter , one number and a special character"),
     }),
     onSubmit: (values : ValuesLogin) => {
