@@ -10,8 +10,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup"
 import { ToastContainer, toast } from "react-toastify";
 import { handleStatusApiError, toastOptions } from "../utils/Validate";
-import { Input, Spin } from "antd";
+import { Input, Spin , Typography } from "antd";
 import { ValuesRegister } from "../utils/typesForm";
+
+
+const { Text } = Typography;
 
 function Register() {
   const location = useLocation();
@@ -45,11 +48,15 @@ function Register() {
         , 4000)  
       } catch (error: any) {
         setLoading(true)
-        handleStatusApiError(error)
+        setTimeout(() => {
+          handleStatusApiError(error)  
+        }, 1000)
         console.log("============= error", error);
       }
     }
   })
+
+  console.log(loading)
 
   return (
     <div>
@@ -71,7 +78,7 @@ function Register() {
           placeholder="Enter your name"
         />
         {formik.errors.name &&
-          <p className="errorMsg">{formik.errors.name}</p>
+            <Text type="danger">{formik.errors.name}</Text>
         }
         <Input 
           type="email"
@@ -82,7 +89,7 @@ function Register() {
           placeholder="Enter your email"
         />
         {formik.errors.email &&
-          <p className="errorMsg">{formik.errors.email}</p>
+           <Text type="danger">{formik.errors.email}</Text>
         }
         <Input 
           type="text"
@@ -93,7 +100,7 @@ function Register() {
           placeholder="Enter your password"
         />
         {formik.errors.password &&
-          <p className="errorMsg">{formik.errors.password}</p>
+           <Text type="danger">{formik.errors.password}</Text>
         }
         <Input 
           type="text"
@@ -104,7 +111,7 @@ function Register() {
           placeholder="Confirm your password"
         />
         {formik.errors.confirmPassword &&
-          <p className="errorMsg">{formik.errors.confirmPassword}</p>
+          <Text type="danger">{formik.errors.confirmPassword}</Text>
         }
 
         <ButtonProps path={location.pathname} />
@@ -114,16 +121,16 @@ function Register() {
         </span>
       </form>
       <ToastContainer
-          position="top-center"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
+         position="top-right"
+         autoClose={5000}
+         hideProgressBar={false}
+         newestOnTop={false}
+         closeOnClick
+         rtl={false}
+         pauseOnFocusLoss
+         draggable
+         pauseOnHover
+         theme="light"
         />
     </div> : <Spin className="loading" tip="Loading" size="large">
         <div className="content" />

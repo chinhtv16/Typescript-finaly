@@ -33,6 +33,7 @@ export const handleValidateLogin = (user : UserValidateLogin, dataInput : DataIn
 
 
 export const handleStatusApiError = (error : StatusErrorApi) => {
+  console.log(error.response.status)
   if (error.response.status === 404 || error.response.status === 400) {
     toast.error("API not working", toastOptions);
   }

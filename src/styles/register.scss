@@ -49,9 +49,7 @@
     padding-bottom: 30px;
 }
 
-.errorMsg {
-    padding: 10px 0;
-    max-width: 100%;
-    font-size:0.75rem;
-    color:rgb(248, 106, 106);
-  }
+.ant-typography{
+    padding: 10px 0 0 0  !important;
+    margin: 0 !important;
+}

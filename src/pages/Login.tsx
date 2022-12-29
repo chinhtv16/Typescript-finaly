@@ -10,7 +10,9 @@ import { UserLogin } from "../utils/types";
 import { useFormik } from "formik";
 import * as Yup from "yup"
 import { DataInputLogin, ValuesLogin } from "../utils/typesForm";
-import { Input } from "antd";
+import { Input , Typography} from "antd";
+
+const { Text } = Typography;
 
 function Login() {
   const location = useLocation();
@@ -71,7 +73,7 @@ function Login() {
             placeholder="Enter your email"
           />
           {formik.errors.email &&
-            <p className="errorMsg">{formik.errors.email}</p>
+              <Text type="danger">{formik.errors.email}</Text>
           }
           <Input 
             type="text"
@@ -82,7 +84,7 @@ function Login() {
             placeholder="Enter your password"
           />
           {formik.errors.password &&
-            <p className="errorMsg">{formik.errors.password}</p>
+          <Text type="danger">{formik.errors.password}</Text>
           }
 
           <ButtonProps path={location.pathname} />
