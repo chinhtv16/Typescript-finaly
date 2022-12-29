@@ -1,24 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../styles/button.css";
+import "../styles/button.scss";
 import { ButtonCommonProp } from "../utils/types";
+import { Button } from 'antd';
 
 
-function Button({ path } : ButtonCommonProp) {
+function ButtonProps({ path } : ButtonCommonProp) {
   return (
-    <div>
-      {path === "" ? (
+    <div className="height">
+      {path === "/" ? (
         <NavLink to = "/dashboard" className="button button--icon">
           <span>Get Start</span>
           <i className="button__icon fa-solid fa-arrow-right"></i>
         </NavLink>
-      ) : path === "login" ? (
-        <button className="button--margin-login" type="submit">Sign In</button>
+      ) : path === "/login" ? (
+        <Button  className="button--margin-login" htmlType="submit">Sign In</Button>
       ) : (
-        <button className = "button--margin-register" type="submit">Register</button>
+        <Button  className = "button--margin-register" htmlType="submit">Register</Button>
       )}
     </div>
   );
 }
 
-export default Button;
+export default ButtonProps;

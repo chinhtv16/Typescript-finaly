@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import "../../styles/header.css";
+import React  from "react";
+import "../../styles/header.scss";
 import UserImg from "../../assets/img/Ellipse 2.png";
 import { useNavigate } from "react-router-dom";
 import { UserDashBoardProps } from "../../utils/types";
@@ -17,14 +17,14 @@ const Header = ({user} : UserDashBoardProps) => {
     <>
       <img
         src={user.avatar}
-        alt={UserImg}
-        className="d-container__header-img"
+        alt= {UserImg }
+        className="header-img"
       />
-      <p className="d-container__header-name">{user.name}</p>
-      <p className="d-container__header-tag">{`@${user.name}`}</p>
+      <p className="header-name">{user.name}</p>
+      <p className="header-tag">{`@${user.name}`}</p>
       <div
         onClick={() => handleLogOut()}
-        className="d-container__header-button"
+        className="header-button"
       >
         Log Out
       </div>
