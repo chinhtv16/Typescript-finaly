@@ -1,7 +1,7 @@
 import React , {useEffect} from "react";
 import "../styles/screen.scss";
 import ScreenImg from "../assets/img/Done.png";
-import Button from "../common/Button";
+import ButtonProps from "../common/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Screen() {
@@ -29,7 +29,7 @@ function Screen() {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum dictum
         tempus, interdum at dignissim metus. Ultricies sed nunc.
       </p>
-      <Button path={location.pathname} />
+      <ButtonProps path={location.pathname} />
     </div>
   );
 }

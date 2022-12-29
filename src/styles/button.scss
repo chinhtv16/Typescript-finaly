@@ -32,21 +32,25 @@
 
 
 
- button{
+.button--margin-login ,
+.button--margin-register{
     background: linear-gradient(267.72deg, #D8605B -0.89%, #F4C27F 112.29%);
     mix-blend-mode: normal;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
     border-radius: 50px;
     width: 315px;
     height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color : #fff;
     transition: all 0.5s;
     font-weight: 700;
     letter-spacing: 1px;
     border : none !important;
+}
+
+.button--margin-login span ,
+.button--margin-register span{
+    margin: 0 !important ;
+    padding-bottom: 0 !important;
 }
 
 .button--margin-login{

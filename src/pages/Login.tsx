@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoginImg from "../assets/img/Done.png";
-import Button from "../common/Button";
+import ButtonProps from "../common/Button";
 import "../styles/login.scss";
 import { handleValidateLogin } from "../utils/Validate";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,6 +10,7 @@ import { UserLogin } from "../utils/types";
 import { useFormik } from "formik";
 import * as Yup from "yup"
 import { DataInputLogin, ValuesLogin } from "../utils/typesForm";
+import { Input } from "antd";
 
 function Login() {
   const location = useLocation();
@@ -61,7 +62,7 @@ function Login() {
           <span>OUR REMINDER</span>
         </div>
         <form onSubmit={formik.handleSubmit}>
-          <input
+          <Input 
             type="text"
             name="email"
             id="email"
@@ -72,7 +73,7 @@ function Login() {
           {formik.errors.email &&
             <p className="errorMsg">{formik.errors.email}</p>
           }
-          <input
+          <Input 
             type="text"
             name="password"
             id="password"
@@ -84,7 +85,7 @@ function Login() {
             <p className="errorMsg">{formik.errors.password}</p>
           }
 
-          <Button path={location.pathname} />
+          <ButtonProps path={location.pathname} />
 
           <span>
             Already have an account ? <Link to="/register">Sing Up</Link>

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "../styles/register.scss";
 import RegisterImg from "../assets/img/Done.png";
-import Button from "../common/Button";
+import ButtonProps from "../common/Button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { registerRoute } from "../utils/APIRoutes";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { useFormik } from "formik";
 import * as Yup from "yup"
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { handleStatusApiError, toastOptions } from "../utils/Validate";
-import { Spin } from "antd";
+import { Input, Spin } from "antd";
 import { ValuesRegister } from "../utils/typesForm";
 
 function Register() {
@@ -44,9 +44,7 @@ function Register() {
         navigate("/login")
         , 4000)  
       } catch (error: any) {
-        setTimeout(() => 
-          setLoading(true)
-         , 2000)
+        setLoading(true)
         handleStatusApiError(error)
         console.log("============= error", error);
       }
@@ -64,7 +62,7 @@ function Register() {
       </div>
       <p className="desc__register">Let’s help you meet up your tasks</p>
       <form onSubmit={formik.handleSubmit}>
-        <input
+        <Input 
           type="text"
           name="name"
           id="name"
@@ -75,7 +73,7 @@ function Register() {
         {formik.errors.name &&
           <p className="errorMsg">{formik.errors.name}</p>
         }
-        <input
+        <Input 
           type="email"
           name="email"
           id="email"
@@ -86,7 +84,7 @@ function Register() {
         {formik.errors.email &&
           <p className="errorMsg">{formik.errors.email}</p>
         }
-        <input
+        <Input 
           type="text"
           name="password"
           id="password"
@@ -97,7 +95,7 @@ function Register() {
         {formik.errors.password &&
           <p className="errorMsg">{formik.errors.password}</p>
         }
-        <input
+        <Input 
           type="text"
           name="confirmPassword"
           id="confirmPassword"
@@ -109,12 +107,24 @@ function Register() {
           <p className="errorMsg">{formik.errors.confirmPassword}</p>
         }
 
-        <Button path={location.pathname} />
+        <ButtonProps path={location.pathname} />
 
         <span className="margin-top">
           Already have an account ? <Link to="/login">Sing In</Link>
         </span>
       </form>
+      <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
     </div> : <Spin className="loading" tip="Loading" size="large">
         <div className="content" />
       </Spin>
