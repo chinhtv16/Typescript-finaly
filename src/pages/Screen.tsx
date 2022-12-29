@@ -12,8 +12,9 @@ function Screen() {
 
   const user : {} = JSON.parse(localStorage.getItem("user") || "{}")
 
+
   useEffect(() => {
-    if (!user) {
+    if (user) {
       navigate("/login");
     }
   }, [user , navigate])

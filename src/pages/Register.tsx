@@ -41,11 +41,8 @@ function Register() {
         localStorage.setItem("user", JSON.stringify(response.data));
         toast.success("Sing In Success", toastOptions);
         setTimeout(() => 
-          setLoading(true)
-         , 2000)
-        setTimeout(() =>
         navigate("/login")
-        , 4000)  
+         , 2000)
       } catch (error: any) {
         setLoading(true)
         setTimeout(() => {
@@ -56,7 +53,6 @@ function Register() {
     }
   })
 
-  console.log(loading)
 
   return (
     <div>
