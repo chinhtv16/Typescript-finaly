@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import "../styles/dashboard.css";
+import React  from "react";
+import "../styles/dashboard.scss";
 import Clock from "../components/dashboard/Clock";
 import TodoList from "../components/dashboard/TodoList";
 import Header from "../components/dashboard/Header";
@@ -9,12 +9,12 @@ const DashBoard = () => {
   const user: UserDashBoard = JSON.parse(localStorage.getItem("user") || "{}");
 
   return (
-    <div className="d-container">
-      <div className="d-container__header">
+    <div className="container">
+      <div className="header__dashboard">
         <Header user={user} />
       </div>
 
-      <div className="d-container__content">
+      <div className="content__dashboard">
         <Clock />
         <TodoList />
       </div>

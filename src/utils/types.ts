@@ -1,6 +1,3 @@
-export type TypeString = string
-export  type TypeObject = object
-
 
 export type ButtonCommonProp = {
     path : string

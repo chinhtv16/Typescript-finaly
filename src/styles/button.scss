@@ -16,6 +16,10 @@
     text-decoration: none;
 }
 
+.button-height{
+    height: 25px;
+}
+
 .button:hover{
     transform: translateY(-10px);
     cursor: pointer;
@@ -46,11 +50,11 @@
 }
 
 .button--margin-login{
-    margin-top: 150px;
+    margin-top: 80px;
 }
 
 .button--margin-register{
-    margin-top: 45px;
+    margin-top: 30px;
 }
 
  button:hover{
